@@ -12,8 +12,7 @@ this happen.
 gem 'rubydice', require: 'dice'
 ```
 
-If you already have a `Dice` object you can simply leave out `require: 'dice'`
-And
+If you already have a `Dice` object you can simply leave out `require: 'dice'` and call methods on `Rubydice` instead.
 
 ## Usage
 
