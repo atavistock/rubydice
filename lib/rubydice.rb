@@ -3,6 +3,13 @@ require "rubydice/options"
 
 class Rubydice
 
+  EXPLODE_LIMIT = 20
+
+  DICE_PATTERN = /
+    (?<count>[0-9]+)D(?<dietype>[0-9]+)
+    (?<static>[+-][0-9]+)?
+  /ix
+
   def initialize(options = {})
     @options = Options.new(options)
   end
@@ -25,15 +32,10 @@ class Rubydice
     total
   end
 
-  DICE_PATTERN = /
-    (?<count>[0-9]+)D(?<dietype>[0-9]+)
-    (?<static>[+-][0-9]+)?
-  /ix
-
   def self.parse(str, options = {})
     str.delete!(' \n\r')
-    data = str.match(DICE_PATTERN).named_captures
-    options.merge!(data)
+    dice_config = str.match(DICE_PATTERN).named_captures
+    options.merge!(dice_config)
     Rubydice.new(options)
   end
 
@@ -56,7 +58,7 @@ class Rubydice
   end
 
   def explode!(rolls)
-    explode_limit = 20
+    explode_limit = EXPLODE_LIMIT
     rolls.map do |roll|
       accum = [roll]
       while roll >= @options.explode && explode_limit > 0
