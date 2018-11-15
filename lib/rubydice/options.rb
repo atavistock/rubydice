@@ -6,9 +6,10 @@ class Rubydice
 
     VALID_DIETYPES = [2,3,4,6,8,10,12,20,32,36,100].freeze
 
-    REQUIRED_ATTRIBUTES = %i{count dietype static}
-    OPTIONAL_ATTRIBUTES = %i{best worst explode reroll}
+    REQUIRED_ATTRIBUTES = %i{count dietype static}.freeze
+    OPTIONAL_ATTRIBUTES = %i{best worst explode reroll}.freeze
 
+    # Methodize these for better readability
     [*REQUIRED_ATTRIBUTES, *OPTIONAL_ATTRIBUTES].each do |attribute|
       define_method(attribute) { @_options[attribute] }
     end
@@ -46,7 +47,7 @@ class Rubydice
       end
 
       if self.count < 1 || self.count > 100
-        raise DiceError.new('#{self.count} is an realistic number of dice')
+        raise DiceError.new('#{self.count} is an unrealistic number of dice')
       end
 
       if self.best && (self.best >= self.count || self.best < 1)
