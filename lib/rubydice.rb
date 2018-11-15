@@ -67,7 +67,7 @@ class Rubydice
         accum << roll
         explode_limit -= 1
         if explode_limit <= 0
-          raise DiceError("More than #{EXPLODE_LIMIT} dice explosions")
+          raise DiceError.new("More than #{EXPLODE_LIMIT} dice explosions")
         end
       end
       accum

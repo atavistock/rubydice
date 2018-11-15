@@ -1,0 +1,38 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.8	//
+Dice	lib/rubydice/dice.rb	/^  class Dice$/;"	c	class:Rubydice
+DiceError	lib/rubydice.rb	/^  class DiceError < StandardError; end$/;"	c	class:Rubydice
+DiceError	lib/rubydice/options.rb	/^    class DiceError < StandardError; end$/;"	c	class:Rubydice.Options
+Options	lib/rubydice/options.rb	/^  class Options$/;"	c	class:Rubydice
+Rubydice	lib/rubydice.rb	/^class Rubydice$/;"	c
+Rubydice	lib/rubydice/dice.rb	/^module Rubydice$/;"	m
+Rubydice	lib/rubydice/options.rb	/^module Rubydice$/;"	m
+Rubydice	lib/rubydice/version.rb	/^module Rubydice$/;"	m
+apply_options!	lib/rubydice.rb	/^  def apply_options!(rolls)$/;"	f	class:Rubydice
+best_of!	lib/rubydice.rb	/^  def best_of!(rolls)$/;"	f	class:Rubydice
+best_of!	lib/rubydice/dice.rb	/^    def best_of!(rolls)$/;"	f	class:Rubydice.Dice
+explode!	lib/rubydice.rb	/^  def explode!(rolls)$/;"	f	class:Rubydice
+explode!	lib/rubydice/dice.rb	/^    def explode!(rolls)$/;"	f	class:Rubydice.Dice
+initialize	lib/rubydice.rb	/^  def initialize(count, dietype, static, options = {})$/;"	f	class:Rubydice
+initialize	lib/rubydice/dice.rb	/^    def initialize(options = {})$/;"	f	class:Rubydice.Dice
+initialize	lib/rubydice/options.rb	/^    def initialize(options)$/;"	f	class:Rubydice.Options
+one_die	lib/rubydice.rb	/^  def one_die$/;"	f	class:Rubydice
+one_die	lib/rubydice/dice.rb	/^    def one_die$/;"	f	class:Rubydice.Dice
+parse	lib/rubydice.rb	/^  def self.parse(str, options = {})$/;"	F	class:Rubydice
+parse	lib/rubydice/dice.rb	/^    def self.parse(str, options = {})$/;"	F	class:Rubydice.Dice
+reroll!	lib/rubydice.rb	/^  def reroll!(rolls)$/;"	f	class:Rubydice
+reroll!	lib/rubydice/dice.rb	/^    def reroll!(rolls)$/;"	f	class:Rubydice.Dice
+roll	lib/rubydice.rb	/^  def roll$/;"	f	class:Rubydice
+roll	lib/rubydice.rb	/^  def self.roll(str, options = {})$/;"	F	class:Rubydice
+roll	lib/rubydice/dice.rb	/^    def roll$/;"	f	class:Rubydice.Dice
+roll	lib/rubydice/dice.rb	/^    def self.roll(str, options = {})$/;"	F	class:Rubydice.Dice
+sanitize_options!	lib/rubydice.rb	/^  def sanitize_options!(options)$/;"	f	class:Rubydice
+sanity_check!	lib/rubydice/options.rb	/^    def sanity_check!$/;"	f	class:Rubydice.Options
+to_s	lib/rubydice.rb	/^  def to_s$/;"	f	class:Rubydice
+to_s	lib/rubydice/dice.rb	/^    def to_s$/;"	f	class:Rubydice.Dice
+worst_of!	lib/rubydice.rb	/^  def worst_of!(rolls)$/;"	f	class:Rubydice
+worst_of!	lib/rubydice/dice.rb	/^    def worst_of!(rolls)$/;"	f	class:Rubydice.Dice

@@ -124,6 +124,12 @@ RSpec.describe Rubydice do
       expect(dice.roll).to eq(43)
     end
 
+    it 'limits exploding dice to prevent working forever' do
+      dice = Rubydice.parse("2d10", explode: 10)
+      allow(dice).to receive(:one_die) { 10 }
+      expect { dice.roll }.to raise_error(DiceError)
+    end
+
   end
 
 end

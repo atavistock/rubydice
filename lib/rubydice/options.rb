@@ -19,7 +19,12 @@ class Rubydice
       options[:static] ||= 0
 
       @_options = options
-      sanity_check!
+
+      attribute_sanity_check!
+      best_option_sanity_check!
+      worst_option_sanity_check!
+      reroll_option_sanity_check!
+      explode_option_sanity_check!
     end
 
     # to_s on required attributes generates a string like the a parsed string
@@ -36,37 +41,48 @@ class Rubydice
 
     private
 
-    def sanity_check!
+    def attribute_sanity_check!
       REQUIRED_ATTRIBUTES.each do |attribute|
         raise DiceError.new("#{attribute} is required") unless @_options[attribute]
       end
 
       if !VALID_DIETYPES.include?(self.dietype)
-        raise DiceError.new('D#{self.dietype} is an invalid die type')
+        raise DiceError.new("D#{self.dietype} is an invalid die type")
       end
 
       if self.count < 1 || self.count > 100
-        raise DiceError.new('#{self.count} is an unrealistic number of dice')
+        raise DiceError.new("#{self.count} is an unrealistic number of dice")
       end
+    end
 
+    def best_option_sanity_check!
       if self.best && (self.best >= self.count || self.best < 1)
         raise DiceError.new("Best #{self.best} of #{self.count} doesn't make sense")
       end
+    end
 
+    def worst_option_sanity_check!
       if self.worst && (self.worst >= self.count || self.worst < 1)
         raise DiceError.new("Worst #{self.worst} of #{self.count} doesn't make sense")
       end
+    end
 
-      if self.reroll && self.reroll >= self.dietype - 1
-        raise DiceError.new("Reroll #{self.reroll}s on D#{self.dietype} doesn't work")
+    def reroll_option_sanity_check!
+      if self.reroll
+        if self.reroll < 1
+          raise DiceError.new("Reroll must be at least 1")
+        end
+        if (self.dietype - self.reroll) <= 1
+          raise DiceError.new("Reroll #{self.reroll} leaves no randomness on D#{self.dietype}")
+        end
       end
+    end
 
-      if self.reroll && self.reroll >= self.dietype - 1
-        raise DiceError.new("Reroll #{self.reroll}s is larger than D#{self.dietype}")
-      end
-
-      if self.explode && self.explode <= 1
-        raise DiceError.new("Explode must be greater than 1")
+    def explode_option_sanity_check!
+      if self.explode
+        if self.explode < 2
+          raise DiceError.new("Explode must be at least 2")
+        end
       end
     end
 
