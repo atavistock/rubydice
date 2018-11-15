@@ -17,7 +17,7 @@ And
 
 ## Usage
 
-Rubydice will accept, parse, and roll for any standard string indicating quanity, die, and modifier.  Die type is limited to standard RPG dice variants.
+Rubydice will accept, parse, and roll for any standard string indicating quanity, die, and modifier.  Die type is limited to standard RPG dice variants 2, 3, 4, 6, 8, 10, 12, 20, 32, 36, and 100.
 
 In the simplest case simply call the `Dice.roll` with:
 ```ruby
@@ -57,6 +57,7 @@ Dice.roll('1d20', reroll: 1)
 ```
 
 __explode__
+
 Any dice with this value get an accumulating reroll
 ```ruby
 Dice.roll('4d10', explode: 10)
