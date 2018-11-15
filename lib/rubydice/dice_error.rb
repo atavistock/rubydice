@@ -1,0 +1,2 @@
+class DiceError < StandardError
+end

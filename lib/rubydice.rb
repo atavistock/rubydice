@@ -1,4 +1,5 @@
 require "rubydice/version"
+require "rubydice/dice_error"
 require "rubydice/options"
 
 class Rubydice
@@ -61,10 +62,13 @@ class Rubydice
     explode_limit = EXPLODE_LIMIT
     rolls.map do |roll|
       accum = [roll]
-      while roll >= @options.explode && explode_limit > 0
+      while roll >= @options.explode
         roll = one_die
         accum << roll
         explode_limit -= 1
+        if explode_limit <= 0
+          raise DiceError("More than #{EXPLODE_LIMIT} dice explosions")
+        end
       end
       accum
     end.flatten

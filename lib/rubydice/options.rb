@@ -2,14 +2,12 @@ class Rubydice
 
   class Options
 
-    class DiceError < StandardError; end
-
     VALID_DIETYPES = [2,3,4,6,8,10,12,20,32,36,100].freeze
 
     REQUIRED_ATTRIBUTES = %i{count dietype static}.freeze
     OPTIONAL_ATTRIBUTES = %i{best worst explode reroll}.freeze
 
-    # Methodize these for better readability
+    # Methodize known options for better readability
     [*REQUIRED_ATTRIBUTES, *OPTIONAL_ATTRIBUTES].each do |attribute|
       define_method(attribute) { @_options[attribute] }
     end
@@ -24,6 +22,7 @@ class Rubydice
       sanity_check!
     end
 
+    # to_s on required attributes generates a string like the a parsed string
     def required_attributes_to_s
       str = "#{self.count}D#{self.dietype}"
       str << "+" if self.static > 0
