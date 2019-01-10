@@ -1,0 +1,28 @@
+#!/usr/bin/env ruby
+
+require "bundler/setup"
+require "rubydice"
+require "benchmark/ips"
+
+Benchmark.ips do |x|
+  x.report("simple dice") do
+    dice = Rubydice.parse("4D6")
+    dice.roll
+  end
+  x.report('dice with adjustment') do
+    dice = Rubydice.parse("4D6+3")
+    dice.roll
+  end
+  x.report('dice with best option') do
+    dice = Rubydice.parse("4D6", best: 3)
+    dice.roll
+  end
+  x.report('dice with reroll option') do
+    dice = Rubydice.parse("3d4", reroll: 1)
+    dice.roll
+  end
+  x.report('dice with explodes') do
+    dice = Rubydice.parse("3D10", explode: 10)
+    dice.roll
+  end
+end
